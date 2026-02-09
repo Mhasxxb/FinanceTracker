@@ -65,3 +65,5 @@ gem 'alphavantage'
 gem "font-awesome-rails"
 
 gem "hirb", "~> 0.7.3"
+
+gem "yarn", "~> 0.1.1"
