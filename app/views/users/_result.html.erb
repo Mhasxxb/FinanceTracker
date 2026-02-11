@@ -1,0 +1,28 @@
+
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-8" style="margin-left: 70px;">
+        <%= render "shared/messages"%>
+    </div>
+    <% if @stock %>
+        <div class="card card-header results-block col-sm-8" style="margin-left: 150px; display: flex; justify-content: space-between; flex-direction: row; align-items:center;">
+            <div style="flex: 2;">
+                <strong>symbol: </strong> <%=@stock.ticker%>
+                <strong>Name: </strong> <%=@stock.name%>
+                <strong>Price: </strong> <%=@stock.last_price%>
+            </div>
+            <% if current_user.can_track_stock?(@stock.ticker) %>
+                <%= link_to "Add", user_stocks_path(user_id: current_user.id, stock_id: @stock.id), class: "btn btn-success", method: :post, style: "margin-left: 46%"  %>
+            <%else%>
+                <p class="badge badge-secondary" style="flex: 1; margin: 0;">
+                    <% if !current_user.stock_already_tracked?(@stock.ticker) %>
+                        Tracking...
+                    <%else%>
+                        Limit exceeded
+                    <%end%>
+                </p>    
+            <%end%>
+        </div>    
+    <%end%>
+</div>
+

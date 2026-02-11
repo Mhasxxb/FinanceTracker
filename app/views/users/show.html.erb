@@ -1,0 +1,18 @@
+<center><h1 style="text-decoration: underline;"><%= @user.fullname %>'s profile</h1></center>
+<br><br>
+
+<div class="text-justified">
+    <strong>Name: </strong> <%=@user.fullname%>
+    <br>
+    <strong>Email: </strong> <%=@user.email%>
+    <br>
+    <strong>Tracking: </strong> <%=@user.stocks.count%> <strong>stocks</strong>
+    <br>
+    <strong>Following: </strong> <%=@user.friends.count%> <strong>friends</strong>
+    <br>
+</div>
+
+
+<% if !@user.stocks.empty? %>   
+    <%= render "stocks/list", obj: @user.stocks, user: @user %>
+<%end%>  

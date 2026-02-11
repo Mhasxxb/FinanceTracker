@@ -133,6 +133,11 @@ GEM
     hirb (0.7.3)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
+    iex-ruby-client (2.1.0)
+      faraday (>= 0.17)
+      faraday-multipart
+      hashie
+      money (~> 6.0)
     jbuilder (2.13.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -154,6 +159,8 @@ GEM
     method_source (1.1.0)
     mini_mime (1.1.5)
     minitest (5.25.5)
+    money (6.19.0)
+      i18n (>= 0.6.4, <= 2)
     msgpack (1.8.0)
     multipart-post (2.4.1)
     net-imap (0.5.12)
@@ -301,6 +308,7 @@ DEPENDENCIES
   devise-bootstrap-views (~> 1.0)
   font-awesome-rails
   hirb (~> 0.7.3)
+  iex-ruby-client (~> 2.1)
   jbuilder (~> 2.7)
   jquery-rails
   pg

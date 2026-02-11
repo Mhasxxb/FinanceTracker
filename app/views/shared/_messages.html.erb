@@ -1,0 +1,14 @@
+<%if flash.any? %>
+
+    <%flash.each do |key, val| %>
+        <div class="alert alert-<%= key == "alert"? "danger" : "success" %> alert-dismissible fade show" role="alert">
+            <div>
+                <%= val %>
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <%end%>
+
+<%end%>

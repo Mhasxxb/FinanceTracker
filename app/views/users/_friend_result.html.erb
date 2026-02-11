@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-8" style="margin-left: 70px;">
+        <%= render "shared/messages"%>
+    </div>
+    <% if @friend %>
+        <div class="card card-header results-block col-sm-8" style="margin-left: 150px; display: flex; justify-content: space-between; flex-direction: row; align-items:center;">
+            <div style="flex: 10;">
+                <strong>Name: </strong> <%=@friend.fullname.truncate(20)%>
+                <br>
+                <strong>Email: </strong> <%=@friend.email.truncate(10)%>
+            </div>
+            
+            <% if @friend.id == current_user.id %>
+                <p class="badge badge-secondary" style="flex: 2; margin: 0;">
+                    You
+                </p>
+            <% elsif !!current_user.friendships.find_by(friend_id: @friend.id) %>   
+                <p class="badge badge-secondary" style="flex: 2; margin: 0;">
+                    Friend
+                </p>
+            <%else%>
+                <%= link_to "Add friend", add_friend_path(user_id: current_user.id, friend_id: @friend.id), class: "btn btn-success", method: :post, style: "flex:1; margin-left: 46%";  %>      
+            <%end%>   
+            
+            <% if @friend.id != current_user.id %>
+                <%= link_to "View", user_path(@friend.id), class: "btn btn-success", method: :get, style: "flex:1; margin-left: 46%;"  %>
+            <%else%>
+                <%= link_to "View", my_portfolio_path, class: "btn btn-success", method: :get, style: "flex:1; margin-left: 46%;"  %>
+            <%end%>
+        </div>    
+    <%end%>
+</div>
